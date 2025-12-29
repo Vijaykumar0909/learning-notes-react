@@ -18,14 +18,13 @@ All updates are done by editing this file only.
 
 ## 🗓️ Daily Log
 
-### Day 01
-**Date:** YYYY-MM-DD  
+### Day 01 - Inception
+**Date:** 2025-12-29  
 **What I learned:**
-- Topic name
-- Key points in simple words
+- CDN - Content Delivery Network
+- Importing react cdn links and priting tags(h1, h2, p) in browser
+- Difference between React and ReactDOM
 
-**Examples (if any):**
-- Short code or explanation
 
 **Status:** ✅ Done
 

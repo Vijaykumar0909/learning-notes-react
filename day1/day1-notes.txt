@@ -1,0 +1,235 @@
+1. Hello world program from HTML, JavaScript & ReactJS
+
+i) HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h1>Hello World!</h1>
+    </div>
+</body>
+</html>
+
+ii) JavaScript
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+        <script>
+            const headign = document.createElement("h1");
+            headign.innerHTML = "Hello World from JavaScript!";
+
+            const root = document.getElementById("root");
+            root.appendChild(headign);
+        </script>
+</body>
+</html>
+
+iii) ReactJS
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+        const heading = React.createElement("h1", {id: "heading" }, "Hello World from React!");
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        root.render(heading);
+    </script>
+</body>
+</html>
+
+2. What is cdn links?
+CDN (Content Delivery Network)
+A CDN is a network of servers distributed across different locations.
+It delivers files like JavaScript, CSS, images, and videos from the server closest to the user.
+
+Why CDNs are used:
+Faster loading of websites
+Reduced load on the main server
+Better performance for users worldwide
+High availability and reliability
+
+Example:
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+Here, React is loaded from a CDN instead of your own server.
+Common CDN examples:
+unpkg
+jsDelivr
+Cloudflare
+Google CDN
+
+One-line summary:
+A CDN serves website files from nearby servers to make websites load faster.
+
+
+
+3. What is crossorigin in script tag from cdn links?
+crossorigin in <script> tag
+crossorigin is used when loading a script from another domain (CDN).
+It tells the browser how to handle cross-origin requests.
+Default behavior is crossorigin="anonymous".
+
+What it does:
+Does not send cookies or credentials
+Allows proper error messages in the browser console
+Helps with debugging and security
+
+Why it is used with React CDN:
+React is loaded from unpkg.com (different origin)
+Prevents "Script error" in DevTools
+Recommended for CDN-based scripts
+
+Example:
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+Other value:
+use-credentials → sends cookies (rarely used for public libraries)
+
+One-line summary:
+crossorigin enables safe cross-domain script loading with better error reporting.
+
+
+
+4. What are this two tags?
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+gemini:
+React CDN Tags
+• React Core: The engine for component logic and state management.
+• ReactDOM: The bridge that renders React components into the browser's DOM.
+
+Key Technical Details
+• CDN (unpkg): Used to load React directly via script tags without a build step.
+• crossorigin: Required for proper error reporting across different domains.
+• development.js: Includes extra warnings and debugging tools (use `production.min.js` for live sites).
+
+chatGPT:
+1️⃣ React (react.development.js)
+Core React library
+Used to:
+Create components
+Use Hooks (useState, useEffect)
+Manage UI logic
+Does NOT interact with the DOM
+Platform independent (can work with web, mobile, native)
+
+2️⃣ ReactDOM (react-dom.development.js)
+Connects React with the Browser DOM
+Used to:
+Render components on the page
+Update UI efficiently
+
+Example:
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+Why both are required? (Very common interview question)
+React → What to render
+ReactDOM → Where & how to render
+Without ReactDOM, React cannot display UI in the browser.
+crossorigin (Interview Keyword)
+Used when loading scripts from another domain (CDN)
+Default value: anonymous
+Purpose:
+No cookies sent
+Enables detailed error messages
+Improves security
+
+development vs production
+Development	Production
+Large size	Minified
+Warnings & errors	No warnings
+Slower	Faster
+For learning/debugging	For live apps
+
+Load Order (Important)
+React must load first
+ReactDOM loads after React
+Wrong order → runtime error
+
+Interview One-Liners
+React is a UI library, not a framework
+ReactDOM is responsible for DOM rendering
+CDN stands for Content Delivery Network
+crossorigin avoids “Script error” in DevTools
+
+When is CDN approach used?
+Learning React
+Small demos
+Quick prototypes
+❌ Not recommended for large production apps
+Final 10-Second Summary (Perfect for interviews)
+React handles UI logic, ReactDOM renders it to the browser, CDN loads libraries from external servers, crossorigin ensures safe loading and proper error reporting, and development builds are only for debugging.
+
+
+5. Create elements using React
+   ex output:
+    <div id="root">
+        <div id="parent">
+            <div id="child">
+                <h1>I'm an h1 tag!</h1>
+            </div>
+        </div>
+    </div>
+
+app.js:
+const parent = React.createElement(
+    "div",
+    { id: "parent" },
+    React.createElement(
+        "div",
+        { id: "child" },
+        React.createElement(
+            "h1",
+            { },
+            "I'm an h1 tag!"
+        )
+    )
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(parent);
+
+in above example if you want to add multiple childrens inside the div(with id child)
+ex output:
+    <div id="root">
+        <div id="parent">
+            <div id="child">
+                <h1>I'm an h1 tag!</h1>
+                <h2>I'm an h2 tag!</h2>
+            </div>
+        </div>
+    </div>
+const parent = React.createElement(
+    "div",
+    { id: "parent" },
+    React.createElement(
+        "div",
+        { id: "child" },
+        [ React.createElement( "h1", { }, "I'm an h1 tag!"), React.createElement( "h2", { }, "I'm an h2 tag!")]  //create an array if you want to add multiple tags inside a div
+    )
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(parent);

@@ -1,0 +1,250 @@
+React Hooks & React Router – Revision Notes
+React Hooks
+What are Hooks?
+Hooks allow using state and lifecycle features in functional components
+
+Common hooks:
+useState
+useEffect
+
+useEffect Hook
+What is useEffect?
+Runs side effects in components
+
+Examples:
+API calls
+Event listeners
+Timers
+Runs after component render
+
+useEffect Syntax
+useEffect(() => {
+  // side effect logic
+}, [dependencies]);
+
+Cases of useEffect
+1️⃣ No dependency array
+➡ Runs after every render
+
+useEffect(() => {
+  console.log("useEffect called");
+});
+console.log("component rendered");
+
+2️⃣ Empty dependency array []
+➡ Runs only once (on initial render)
+useEffect(() => {
+  console.log("useEffect called");
+}, []);
+console.log("component rendered");
+
+3️⃣ Dependency array with values
+➡ Runs only when dependency changes
+useEffect(() => {
+  console.log("useEffect called");
+}, [btnNameReact]);
+console.log("component rendered");
+
+
+useEffect runs every time btnNameReact changes
+useState Hook
+What is useState?
+Used to manage state in functional components
+State changes trigger re-render
+
+Syntax
+const [items, setItems] = useState([]);
+
+Rules of useState (Very Important)
+1️⃣ Call useState inside component function only
+✅ Correct
+const ComponentName = () => {
+  const [items, setItems] = useState([]);
+
+  return (
+    <div>
+      <h1>Hello</h1>
+    </div>
+  );
+};
+
+
+❌ Wrong
+const [items, setItems] = useState([]);
+const ComponentName = () => {
+  return <h1>Hello</h1>;
+};
+2️⃣ Never call useState inside:
+if / else
+for loops
+conditions
+nested functions
+
+❌ Wrong
+const ComponentName = () => {
+  if (condition) {
+    const [items, setItems] = useState([]);
+  }
+};
+
+3️⃣ Always keep useState at the top of component
+✅ Correct
+const ComponentName = () => {
+  const [items, setItems] = useState([]);
+
+  if (condition) {
+    // logic only
+  }
+
+  return <h1>Hello</h1>;
+};
+
+React Router
+What is React Router?
+Used for routing / navigation in React
+Example pages:
+Home
+About
+Restaurants
+
+Installation
+npm install react-router-dom
+
+Adds react-router-dom to dependencies in package.json
+
+Routing Setup
+App.js (Root Level)
+import { createBrowserRouter } from "react-router-dom";
+
+Creating Router Configuration
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+  {
+    path: "/restaurants",
+    element: <Restaurants />,
+  },
+]);
+
+export default appRouter;
+
+Steps (Interview Friendly)
+Import createBrowserRouter
+Pass array of route objects
+Each object has:
+path
+element (component to render)
+Providing Router to App
+import { RouterProvider } from "react-router-dom";
+root.render(<RouterProvider router={appRouter} />);
+
+RouterProvider supplies routing to the app
+Types of Routers
+createBrowserRouter → browser routing
+createHashRouter → hash-based routing
+createMemoryRouter → memory-based routing
+createStaticRouter → static routing
+
+Shortcut to Create Component
+rafce + Enter
+
+
+Creates:
+const ComponentName = () => {
+  return <div>Demo</div>;
+};
+
+export default ComponentName;
+
+Handling 404 / Page Not Found
+Using errorElement
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppComponent />,
+    errorElement: <ErrorComponent />,
+  },
+]);
+
+Error.js
+import { useRouteError } from "react-router-dom";
+
+const Error = () => {
+  const err = useRouteError();
+
+  return (
+    <div>
+      <h1>Oops!</h1>
+      <h2>Something went wrong</h2>
+      <h3>
+        {err.status} : {err.statusText}
+      </h3>
+    </div>
+  );
+};
+
+export default Error;
+
+Children Routes (Nested Routing)
+Use Case
+Keep Header & Footer fixed
+Change main content only
+AppLayout
+import { Outlet } from "react-router-dom";
+
+const AppLayout = () => {
+  return (
+    <div>
+      <Header />
+      <Outlet /> {/* children routes render here */}
+    </div>
+  );
+};
+
+Router with Children
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      { path: "/", element: <Body /> },
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
+    ],
+  },
+]);
+
+Navigation Links
+❌ Using <a> tag (Not Recommended)
+<a href="/about">About</a>
+Causes full page reload
+Loses state
+
+✅ Using Link (Recommended)
+import { Link } from "react-router-dom";
+<Link to="/about">About</Link>
+
+No page reload
+SPA behavior maintained
+Important React Rule
+When using map()
+Key is mandatory
+
+items.map(item => (
+  <li key={item.id}>{item.name}</li>
+));
+
+Final Interview Summary (30 Seconds)
+useState manages state
+useEffect handles side effects
+Hooks must be called at top level
+React Router enables SPA navigation
+Outlet renders child routes
+Link avoids page reload
+Always use key while mapping lists

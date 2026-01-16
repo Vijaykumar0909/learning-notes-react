@@ -1,0 +1,7 @@
+1. prettier - code formatter 
+    by - prettier.io
+2. Bracket Pair Colorization Toggler
+    by - Dzhavat Ushev
+3. Better Comments
+    by - Aaron Bond
+    

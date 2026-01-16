@@ -1,0 +1,37 @@
+{
+  "name": "learning-notes-react",
+  "version": "1.0.0",
+  "description": "This is Namaste React course by Akshay Saini",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vijaykumar0909/learning-notes-react.git"
+  },
+  "keywords": [
+    "react",
+    "namaste",
+    "react",
+    "vijay",
+    "guggilla"
+  ],
+  "author": "Vijay Kumar Guggilla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vijaykumar0909/learning-notes-react/issues"
+  },
+  "homepage": "https://github.com/Vijaykumar0909/learning-notes-react#readme",
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}

@@ -1,0 +1,26 @@
+you have index.html, App.js, index.css
+
+npm important:
+npm init -y -> skips lot of things
+instead use below:
+npm init -> it will ask few things do all required
+    - package.json file will be created
+
+
+git commands:
+* if you created a new repository in github and you want to connect to this repo from your vs code then use this below command 
+git remote add origin git@github.com:vijaykumar0909/learning-react-notes
+
+
+git branch -b "main" -> create a branch and switch
+git branch "main" -> creates a branch
+git status -> current state of your working directory and staging area
+git add . -> stages all changes in the current directory and its subdirectories
+git restore --staged filename -> unstage a specific file
+git restore --staged -> unstage all files
+git pull origin master -> fetch all latest changes from remote repository(origin) and merge the master branch into your current branch
+git push origin main -> push your 
+git stash -> saves your uncommitted changes 
+git stash push -m "stash message"
+git stash list -> list stashes
+git stash apply -> applies latest stash and keeps it

@@ -1,0 +1,1 @@
+creating the restaurant card, loading dynamic restaurant data into cards, calling api

@@ -1,0 +1,3 @@
+6. added search bar, loaded restaurant cards dynamically, shimmer ui, filter restaurants button
+6.1 swiggy api issue resolved
+6.2 CORS issue resolved

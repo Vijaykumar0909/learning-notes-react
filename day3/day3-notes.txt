@@ -1,0 +1,31 @@
+1. package.json:
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  
+after adding this scripts now no need to use below commands
+previous                       now
+npx parcel index.html    ->     npm run start (or) npm start 
+npx parcel build index.html    ->     npm run build start (or) npm build start
+
+2. React.createElement -> creates a object -> HTMLElement(render) in the ui
+const heading = React.createElement("h1", {}, "Namaste React"); -> here react created a object 
+const root = ReactDOM.createRoot(document.getElementById("root")); -> 
+root.render(heading); -> here root (ReactDOM ) takes the react object and converts into html 
+
+3. JSX
+React 
+const heading = React.createElement("h1", {}, "Namaste React");
+
+simply written as below 
+
+jsx
+const jsxheading = <h1> Namaste React </h1>
+
+-> jsx is not html in javascript. jsx is so powerful it can protect from malicious attacks.
+-> HTML/XML like syntax
+-> console log both React object (heading) and jsx(jsxheading) -> outputs same object 
+-> so this HTML is translated by parcel using babel 
+->  

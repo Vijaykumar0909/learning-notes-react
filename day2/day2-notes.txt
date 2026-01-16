@@ -1,0 +1,169 @@
+npm 
+npm init -> setup our app with package.json file, installing bundlers
+bundlers
+react app -> we can use any of the this -> webpack, parcel, veet ...etc any of this
+we are using parcel(beast) -> npm install -D parcel -> here -D means developer environment -> after this command automatically package-lock.json and node_modules
+two types in the package.json file -> normal dependencies(production ready versions) & dev dependencies(lower environment/developement)
+difference between ^ and ~
+package.json -> configuration file for npm -> more about this
+package-lock.json -> locks the version and keeps record of it 
+node_modules -> actual database for this configurations, fetch all the code of the all dependencies into our system and run locally
+for each dependency there will package.json file -> so we have more than one package.json file
+parcel is a dependency -> parcel is dependent on other dependencies -> and these other dependencies dependent on others
+do not push node_modules -> why? -> if i have package.json & package-lock.json then we can generate node_modules and run this project locally
+.gitignore -> add any path in this fill git will start ignoring the file changes made inside this file -> ex. /node_modules, /dist, .parcel-cache ...etc
+no need to add the cdn links in the index.html file -> costly -> instead we can install react, react-dom locally and this will be added to the package.json file directly -> npm install react, npm install react-dom -> after we can verify the package.json & package-lock.json files for versions whether they are installed or not
+links:  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+parcel features ->  https://parceljs.org/
+-> https://github.com/parcel-bundler/parcel
+* Dev build
+* Local server
+* HMR - Hot Module Replacement
+* File watching algorithm -> written in c++
+* caching - faster builds
+* Image Optimization
+* Minification of file (in prod env)
+* Compress
+* Consistent Hashing
+* Code Splitting
+* Differential Bundling -> open in different versions of different browsers
+* Diagnostic
+* Error Handling
+* Host on HTTPS
+* Tree Shaking - remove unused code
+* Different Dev and Production
+
+parcel internally uses babel
+Babel -> Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments.
+babel -> https://babeljs.io/
+
+ex. 
+const jsxheading = <h1> Namaste react </h1>
+
+-> converts jsxheading to react object 
+
+import { jsx as _jsx } from "react/jsx-runtime";
+const jsxheading = /*#__PURE__*/_jsx("h1", {
+  children: " Namaste react "
+});
+
+
+to run the local server:
+npx parcel index.html -> dev 
+npx parcel build index.html -> prod 
+
+
+package.json 
+//adding this browserslist means our application will support in these many browsers 
+https://browserslist.dev/
+-> https://github.com/parcel-bundler/parcel
+"browserslist": {
+    "last 2 versions"
+}
+
+
+
+
+
+
+
+
+
+
+1. ^ vs ~ (Very Short – Interview Ready)
+
+^ (caret) → allows minor + patch updates
+Example: ^1.2.3 → 1.x.x (but not 2.0.0)
+
+~ (tilde) → allows only patch updates
+Example: ~1.2.3 → 1.2.x
+
+One-line answer (perfect for interview):
+^ is flexible (minor + patch updates), ~ is strict (patch updates only).
+
+2. What is npm?
+npm stands for Node Package Manager
+It is the default package manager for Node.js
+Used to install, manage, and share JavaScript libraries
+
+What problem does npm solve?
+Before npm:
+Manually download JS files
+Manually manage versions
+Difficult dependency handling
+
+With npm:
+Automatic installation
+Version control
+Dependency management
+
+What can you do with npm?
+Install libraries (React, Angular, Axios, etc.)
+Manage project dependencies
+Run scripts (build, test, start)
+Share your own packages
+
+Key npm terms (Very Important)
+1️⃣ Package
+A reusable piece of code
+Example: react, lodash
+
+2️⃣ Dependency
+A package your project needs to work
+
+3️⃣ node_modules
+Folder where installed packages are stored
+Auto-generated (not committed to Git)
+
+4️⃣ package.json
+Configuration file for a project
+
+Contains:
+Project info
+Dependencies
+Scripts
+
+Common npm commands (Must remember)
+npm init          # create package.json
+npm install       # install all dependencies
+npm install react # install a package
+npm uninstall pkg # remove a package
+npm start         # run app
+npm run build     # build app
+
+Local vs Global installation
+Type	Use case
+Local	Project-specific libraries
+Global	CLI tools (npm, nodemon, etc.)
+
+Example:
+
+npm install -g nodemon
+
+npm vs CDN (Interview Favorite)
+npm	CDN
+Used in real projects	Used for learning/demo
+Bundled with tools	Loaded via script tag
+Version controlled	Less control
+Production-ready	Not scalable
+npm in React projects
+
+React apps use npm to:
+Install React
+Manage dependencies
+Build production bundles
+
+Example:
+npx create-react-app myApp
+npm vs npx (Short)
+npm → installs packages
+npx → runs packages without installing globally
+Interview One-Liners
+npm is the package manager for JavaScript
+package.json defines project dependencies
+node_modules contains installed packages
+npm helps in dependency and version management
+10-Second Interview Summary
+npm is the default package manager for Node.js that helps developers install, manage, and run JavaScript libraries and dependencies efficiently using package.json.
